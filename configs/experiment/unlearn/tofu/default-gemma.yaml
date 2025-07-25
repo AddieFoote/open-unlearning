@@ -8,9 +8,6 @@ defaults:
   - override /data/datasets@data.retain: TOFU_QA_retain
   - override /eval: tofu
 
-model:
-  model_args:
-    pretrained_model_name_or_path: /workspace/open_unlearning/saves/finetune/FINETUNE_GEMMA_TOFU
 
 forget_split: forget10
 retain_split: retain90
@@ -43,7 +40,7 @@ trainer:
   args:
     warmup_epochs: 1.0 # custom parameter
     learning_rate: 1e-5
-    weight_decay: 0.01
+    weight_decay: 0.0
     num_train_epochs: 10
     # save_strategy: steps
     # save_steps: 0.5
