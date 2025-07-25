@@ -45,6 +45,7 @@ class UnlearningMetric:
     def evaluate_metric(self, model, metric_name, **kwargs):
         logger.info(f"Evaluating {metric_name}")
         results = self._metric_fn(model, **kwargs)
+        logger.info(f"Results for {metric_name}, agg value: {results.get('agg_value')}")
         return results
 
     def load_logs_from_file(self, file):
