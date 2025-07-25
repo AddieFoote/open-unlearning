@@ -1,0 +1,36 @@
+# @package _global_
+
+defaults:
+  - override /model: gemma-2-2b
+  - override /trainer: distill
+  - override /data/datasets@data.train: TOFU_QA_full
+  - override /eval: tofu
+
+
+mode: finetune
+trainer:
+  method_args:
+    teacher_model:
+      model_args:
+        pretrained_model_name_or_path: /workspace/open_unlearning/saves/unlearn/ga_tofu_Gemma
+
+  args:
+    learning_rate: 1e-5
+    weight_decay: 0.01
+    warmup_epochs: 1.0 # custom parameter
+    num_train_epochs: 5
+
+
+forget_split: forget10
+holdout_split: holdout10
+retain_logs_path: null
+
+eval:
+  tofu:
+    forget_split: ${forget_split}
+    holdout_split: ${holdout_split}
+    retain_logs_path: ${retain_logs_path}
+    overwrite: true
+
+
+task_name: tofu_Gemma_distill

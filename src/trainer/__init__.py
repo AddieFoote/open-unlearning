@@ -4,6 +4,7 @@ from omegaconf import DictConfig
 from transformers import Trainer, TrainingArguments
 
 from trainer.base import FinetuneTrainer
+from trainer.distill import DistillTrainer
 from trainer.unlearn.grad_ascent import GradAscent
 from trainer.unlearn.grad_diff import GradDiff
 from trainer.unlearn.npo import NPO
@@ -66,6 +67,7 @@ def load_trainer(
     assert trainer_cls is not None, NotImplementedError(
         f"{trainer_handler_name} not implemented or not registered"
     )
+
     trainer = trainer_cls(
         model=model,
         train_dataset=train_dataset,
@@ -86,6 +88,9 @@ def load_trainer(
 # Register Finetuning Trainer
 _register_trainer(Trainer)
 _register_trainer(FinetuneTrainer)
+
+# Register Distillation Trainer
+_register_trainer(DistillTrainer)
 
 # Register Unlearning Trainer
 _register_trainer(GradAscent)
