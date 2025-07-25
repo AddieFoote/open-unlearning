@@ -21,6 +21,6 @@ args:
   eval_on_start: True
   eval_strategy: steps
   eval_steps: 10
-  num_train_epochs: 10
+  num_train_epochs: 20
   seed: 0
   max_steps: 100 # NOTE: 100 steps, could increase/decrease as  is fit
