@@ -1,0 +1,26 @@
+[project]
+name = "open-unlearning"
+version = "0.1.0"
+dependencies = [
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
