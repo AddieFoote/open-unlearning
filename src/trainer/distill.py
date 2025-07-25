@@ -49,7 +49,7 @@ def forward_kl_loss_fn(
 
 
 class DistillTrainer(FinetuneTrainer):
-    def __init__(self, teacher_model, temperature, evaluators=None, template_args=None, *args, **kwargs):
+    def __init__(self, teacher_model, temperature, *args, **kwargs):
         # teacher model, temperature
         # TODO: Load teacher model, set tokenizer
         model, tokenizer = get_model(teacher_model)
